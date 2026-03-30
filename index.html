@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SasiKumar S - Hacker Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Goldman:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Devicon for exact logos -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+</head>
+
+<body>
+
+    <!-- Background Canvas for Matrix Rain and Particles -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- START OVERLAY -->
+    <div id="start-overlay">
+
+        <!-- Canvas Particle Network Background -->
+        <canvas id="uplink-canvas"></canvas>
+
+        <!-- Corner HUD Brackets -->
+        <div class="uplink-corner tl"></div>
+        <div class="uplink-corner tr"></div>
+        <div class="uplink-corner bl"></div>
+        <div class="uplink-corner br"></div>
+
+        <!-- Top Info Strip -->
+        <div class="uplink-top-strip">
+            <span>NODE //<span class="uplink-accent">127.0.0.1</span></span>
+            <span class="uplink-top-center">// SECURE_SHELL_ACCESS //</span>
+            <span>REF //<span class="uplink-accent">0xC4F3</span></span>
+        </div>
+
+        <!-- Central Lock Icon (pure CSS) -->
+        <div class="uplink-lock">
+            <div class="uplink-lock-shackle"></div>
+            <div class="uplink-lock-body">
+                <span class="uplink-lock-keyhole"></span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <button id="btn-start">[ ESTABLISH_UPLINK ]</button>
+        <p class="uplink-subtitle">Terminal sleeping. Awaiting manual override.</p>
+
+        <!-- System Status Bar -->
+        <div class="uplink-status-bar">
+            <span>KERNEL: v4.19.0</span>
+            <span class="uplink-blink">■</span>
+            <span>AWAITING_INPUT</span>
+            <span class="uplink-blink">■</span>
+            <span>UPTIME: 00:00:00</span>
+        </div>
+    </div>
+
+    <!-- INTRO SCREEN -->
+    <div id="intro-screen">
+        <!-- Security Background 3D Cyber Tunnel Animation -->
+        <div id="intro-security-bg">
+            <div class="cyber-grid-top"></div>
+            <div class="cyber-grid-bottom"></div>
+            <div class="cyber-bg-glow"></div>
+            <div class="cyber-vignette"></div>
+        </div>
+
+        <div class="terminal-window" id="intro-terminal" style="width: 80%; max-width: 800px;">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <span class="terminal-title">root@sasi:~# boot_sequence.sh</span>
+            </div>
+            <div class="terminal-body"
+                style="min-height: 350px; text-align: left; font-size: 1.3rem; line-height: 1.6; background: rgba(5, 5, 5, 0.9);">
+                <div id="terminal-content"></div>
+            </div>
+        </div>
+        <div id="access-granted-screen" class="hidden">
+            <div class="hexagon-glow">
+                <h1>ACCESS GRANTED</h1>
+                <div class="access-subtitle">SYSTEM UNLOCKED</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN PORTFOLIO -->
+    <div id="main-content" class="hidden">
+        <!-- NAVBAR -->
+        <nav id="navbar">
+            <div class="nav-hud-frame">
+                <!-- TOP LOG FEED -->
+                <div class="nav-log-feed">
+                    <span class="log-marquee" id="nav-log-marquee">INITIALIZING_SECURE_LINK... 0x7F000001_PACKET_RECV...
+                        ENCRYPTING_SESSION_STREAM... TERMINAL_SASIKUMAR_ACTIVE...</span>
+                </div>
+
+                <div class="nav-container">
+                    <div class="nav-left">
+                        <div class="nav-terminal-id">TERMINAL_S-01</div>
+                        <a href="#home" class="logo"><span class="neon-green">SYS:</span>Cyber-Sasi</a>
+                    </div>
+
+                    <ul class="nav-links">
+                        <li><a href="#home"><span class="nav-hex">01_</span>Home</a></li>
+                        <li><a href="#about"><span class="nav-hex">02_</span>About</a></li>
+                        <li><a href="#skills"><span class="nav-hex">03_</span>Skills</a></li>
+                        <li><a href="#projects"><span class="nav-hex">04_</span>Projects</a></li>
+                        <li><a href="#certificates"><span class="nav-hex">05_</span>Certs</a></li>
+                        <li><a href="#contact"><span class="nav-hex">06_</span>Contact</a></li>
+                    </ul>
+
+                    <div class="nav-right">
+                        <div class="nav-system-stats">
+                            <div class="stat-line">PING:<span id="nav-ping">24ms</span></div>
+                            <div class="stat-line">STATUS:<span class="neon-green">OFFLINE</span></div>
+                        </div>
+                        <div class="menu-toggle" id="mobile-menu">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- HUD SCANLINE ACCENT -->
+                <div class="nav-scan-accent"></div>
+            </div>
+        </nav>
+
+        <!-- HOME SECTION -->
+        <section id="home" class="section">
+            <div class="home-content">
+                <h1 class="glitch-text">Hi, I'm <span class="rgb-text">SasiKumar S</span></h1>
+                <div class="typing-container">
+                    <span id="typing-loop"></span><span class="cursor">|</span>
+                </div>
+
+                <!-- NEW BUTTONS -->
+                <div class="home-actions">
+                    <a href="#about" class="hero-btn btn-red">EXPLORE PROFILE</a>
+                    <a href="#contact" class="hero-btn btn-green">GET IN TOUCH</a>
+                </div>
+
+                <!-- SYSTEM STATUS INDICATORS -->
+                <div class="system-status">
+                    <div class="status-item">
+                        <span class="status-dot online"></span>
+                        <span class="status-text">System Online</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-dot shield">🛡️</span>
+                        <span class="status-text">Firewall Active</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-dot lock">🔒</span>
+                        <span class="status-text">Encrypted</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section">
+            <h2 class="section-title"><span class="neon-red">></span> About_Me</h2>
+            <div class="about-container">
+                <div class="avatar-container">
+                    <div class="avatar-glow"></div>
+                    <img src="https://www.quantropi.com/wp-content/uploads/2022/02/hacker-g1e3a44200_1920_b6ba00f811758a41c98bff2db4b9e3e4_2000-1024x788.jpg"
+                        alt="Loadind..." class="avatar" />
+                    <div class="scanline"></div>
+                </div>
+                <div class="about-text">
+                    <p class="sys-msg">> System Initialized... Loading profile...</p>
+                    <p>Hi, I'm <strong class="neon-red" style="text-shadow: 0 0 5px var(--neon-red);">SasiKumar
+                            S</strong>, a technology enthusiast from India with a strong interest in <strong
+                            class="neon-red" style="text-shadow: 0 0 5px var(--neon-red);">Cybersecurity</strong>,
+                        <strong class="neon-red" style="text-shadow: 0 0 5px var(--neon-red);">Programming</strong>, and
+                        <strong class="neon-red" style="text-shadow: 0 0 5px var(--neon-red);">Ethical Hacking</strong>.
+                    </p>
+                    <p>I enjoy understanding how systems work, identifying vulnerabilities, and building secure
+                        solutions. My goal is to become a skilled cybersecurity professional focused on protecting
+                        systems and data from cyber threats.</p>
+                    <div class="hacker-stats">
+                        <div class="stat-line">
+                            <span class="stat-label">Clearance Level:</span>
+                            <span class="stat-value neon-red">[ Top Secret ]</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">Threat Detection:</span>
+                            <div class="stat-bar">
+                                <div class="fill" style="width: 98%;"></div>
+                            </div>
+                            <span class="stat-percent neon-green">98%</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">Exploit Crafting:</span>
+                            <div class="stat-bar">
+                                <div class="fill" style="width: 92%;"></div>
+                            </div>
+                            <span class="stat-percent neon-green">92%</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">Primary Weapon:</span>
+                            <span class="stat-value neon-green">Python & Bash</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="section">
+            <h2 class="section-title"><span class="neon-green">></span>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-skill="Python"><i class="devicon-python-plain"></i><span>Python</span>
+                </div>
+                <div class="skill-card" data-skill="Java"><i class="devicon-java-plain"></i><span>Java</span></div>
+                <div class="skill-card" data-skill="HTML"><i class="devicon-html5-plain"></i><span>HTML</span></div>
+                <div class="skill-card" data-skill="CSS"><i class="devicon-css3-plain"></i><span>CSS</span></div>
+                <div class="skill-card" data-skill="JavaScript"><i
+                        class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+                <div class="skill-card" data-skill="MySQL"><i class="devicon-mysql-plain"></i><span>MySQL</span></div>
+                <div class="skill-card" data-skill="Docker"><i class="devicon-docker-plain"></i><span>Docker</span>
+                </div>
+                <div class="skill-card" data-skill="Kubernetes"><i
+                        class="devicon-kubernetes-plain"></i><span>Kubernetes</span></div>
+                <div class="skill-card" data-skill="Power BI">
+                    <i style="display: flex; justify-content: center; align-items: center; width: 1em; height: 1em;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%">
+                            <path d="M16 4h4v16h-4V4z M10 9h4v11h-4V9z M4 14h4v6H4v-6z" />
+                        </svg>
+                    </i>
+                    <span>Power BI</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="section">
+            <h2 class="section-title"><span class="neon-red">></span> Executable_Projects</h2>
+            <div class="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://repository-images.githubusercontent.com/1023801737/c9d60aee-e9c5-4cbc-be11-7667d15f3710"
+                            alt="SkillMirror">
+                    </div>
+                    <div class="project-info">
+                        <h3>SkillMirror – GitHub User Analyzer</h3>
+                        <p>Analyzes GitHub profiles to show repositories, coding activity, and top programming languages
+                            with simple insights.</p>
+                        <br>
+                        <ul
+                            style="list-style-type: none; padding-left: 0; margin-bottom: 15px; color: var(--text-color); opacity: 0.9; line-height: 1.8;">
+                            <li><span class="neon-red">></span> Analyze GitHub users</li>
+                            <li><span class="neon-red">></span> View repos & activity</li>
+                            <li><span class="neon-red">></span> Identify top languages</li>
+                            <li><span class="neon-red">></span> Quick and simple interface</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/cyber-sasi/SkillMirror" class="btn btn-github">View GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card reverse">
+                    <div class="project-image">
+                        <img src="https://www.shutterstock.com/image-photo/glowing-digital-lock-surrounded-by-600nw-2517566697.jpg"
+                            alt="Cyber Portfolio Website">
+                    </div>
+                    <div class="project-info">
+                        <h3>Cyber Portfolio Website</h3>
+                        <p>A hacker-style portfolio to showcase projects, skills, and contact details with interactive
+                            cyber UI.</p>
+                        <br>
+                        <ul
+                            style="list-style-type: none; padding-left: 0; margin-bottom: 15px; color: var(--text-color); opacity: 0.9; line-height: 1.8;">
+                            <li><span class="neon-red">></span> Typing intro animation</li>
+                            <li><span class="neon-red">></span> “ACCESS GRANTED” screen</li>
+                            <li><span class="neon-red">></span> Animated skills & projects</li>
+                            <li><span class="neon-red">></span> Cyber-themed design</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-live">Live Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATES SECTION -->
+        <section id="certificates" class="section">
+            <h2 class="section-title"><span class="neon-green">></span> Certifications</h2>
+            <div class="cert-grid">
+                <!-- Cert 1 -->
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-status">[ DECRYPTION_COMPLETE ]</span>
+                        <span class="cert-id">ID: 001</span>
+                    </div>
+                    <div class="cert-image-container">
+                        <img src="certificate/cert1.jpg" alt="Certificate 1" class="cert-img">
+                        <div class="cert-scanline"></div>
+                        <div class="cert-overlay"></div>
+                    </div>
+                    <div class="cert-body">
+                        <h3>WEB DEVELOPMENT</h3>
+
+                        <div class="cert-hash">HASH: 0x93F2B8A...</div>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-status">[ DECRYPTION_COMPLETE ]</span>
+                        <span class="cert-id">ID: 002</span>
+                    </div>
+                    <div class="cert-image-container">
+                        <img src="certificate/cert2.jpg" alt="Certificate 2" class="cert-img">
+                        <div class="cert-scanline"></div>
+                        <div class="cert-overlay"></div>
+                    </div>
+                    <div class="cert-body">
+                        <h3>CYBERSECURITY</h3>
+
+                        <div class="cert-hash">HASH: 0x47C9D1E...</div>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-status">[ DECRYPTION_COMPLETE ]</span>
+                        <span class="cert-id">ID: 003</span>
+                    </div>
+                    <div class="cert-image-container">
+                        <img src="certificate/cert3.jpg" alt="Certificate 3" class="cert-img">
+                        <div class="cert-scanline"></div>
+                        <div class="cert-overlay"></div>
+                    </div>
+                    <div class="cert-body">
+                        <h3>FULL STACK DEVELOPMENT</h3>
+
+                        <div class="cert-hash">HASH: 0x88A1F4B...</div>
+                    </div>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-status">[ DECRYPTION_COMPLETE ]</span>
+                        <span class="cert-id">ID: 004</span>
+                    </div>
+                    <div class="cert-image-container">
+                        <img src="certificate/cert4.jpg" alt="Certificate 4" class="cert-img">
+                        <div class="cert-scanline"></div>
+                        <div class="cert-overlay"></div>
+                    </div>
+                    <div class="cert-body">
+                        <h3>POWER BI</h3>
+
+                        <div class="cert-hash">HASH: 0xB2C3D4E...</div>
+                    </div>
+                </div>
+
+                <!-- Cert 5 -->
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-status">[ DECRYPTION_COMPLETE ]</span>
+                        <span class="cert-id">ID: 005</span>
+                    </div>
+                    <div class="cert-image-container">
+                        <img src="certificate/cert5.jpg" alt="Certificate 5" class="cert-img">
+                        <div class="cert-scanline"></div>
+                        <div class="cert-overlay"></div>
+                    </div>
+                    <div class="cert-body">
+                        <h3>CYBERSECURITY ANALYST</h3>
+
+                        <div class="cert-hash">HASH: 0xE5F6G7H...</div>
+                    </div>
+                </div>
+
+                <!-- Cert 6 -->
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-status">[ DECRYPTION_COMPLETE ]</span>
+                        <span class="cert-id">ID: 006</span>
+                    </div>
+                    <div class="cert-image-container">
+                        <img src="certificate/cert6.jpg" alt="Certificate 6" class="cert-img">
+                        <div class="cert-scanline"></div>
+                        <div class="cert-overlay"></div>
+                    </div>
+                    <div class="cert-body">
+                        <h3>SICIAL ENGINEERING FUNDAMENTALS</h3>
+
+                        <div class="cert-hash">HASH: 0xI8J9K0L...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section">
+            <h2 class="section-title"><span class="neon-red">></span> Establish_Connection</h2>
+            <div class="contact-container">
+                <div class="contact-left">
+                    <div class="contact-intro">
+                        <h3>Initiate Handshake...</h3>
+                        <p>Select a node to establish a secure peer-to-peer connection.</p>
+                    </div>
+                    <div class="contact-grid">
+                        <a href="https://github.com/cyber-sasi" class="contact-node">
+                            <div class="node-box">GH</div>
+                            <div class="node-info">
+                                <span class="node-name">GitHub</span>
+                                <span class="node-status text-green">Online</span>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/cyber-sasi1604" class="contact-node">
+                            <div class="node-box">LI</div>
+                            <div class="node-info">
+                                <span class="node-name">LinkedIn</span>
+                                <span class="node-status text-green">Online</span>
+                            </div>
+                        </a>
+                        <a href="mailto:sasikumarr1906.com" class="contact-node">
+                            <div class="node-box">EM</div>
+                            <div class="node-info">
+                                <span class="node-name">Email</span>
+                                <span class="node-status text-red">Encrypted</span>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/919025605517?text=Hi%20Sasi%2C%20I%20want%20to%20connect" class="contact-node">
+                            <div class="node-box">WA</div>
+                            <div class="node-info">
+                                <span class="node-name">WhatsApp</span>
+                                <span class="node-status text-red">Encrypted</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title">root@sasi:~# secure_com.sh</span>
+                        </div>
+                        <div class="terminal-body modern-body">
+                            <form id="contact-form" class="modern-form">
+                                <div class="input-group">
+                                    <input type="text" id="name" required placeholder=" " autocomplete="off">
+                                    <label for="name">Your Name</label>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="input-group">
+                                    <input type="email" id="email" required placeholder=" " autocomplete="off">
+                                    <label for="email">Your Email</label>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="input-group">
+                                    <textarea id="message" rows="4" required placeholder=" "></textarea>
+                                    <label for="message">Message</label>
+                                    <div class="line"></div>
+                                </div>
+                                <button type="submit" class="btn-modern-execute">
+                                    <span>SEND_TRANSMISSION</span>
+                                </button>
+                            </form>
+                            <div id="form-success" class="hidden modern-success">
+                                <div class="checkmark-circle"></div>
+                                <h2>Message Sent</h2>
+                                <p>Transmission Complete.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>[root@sasi:~]$ ./deploy_2026.sh --secured</p>
+        </footer>
+    </div>
+
+    <!-- Audios -->
+    <!-- Placeholders for actual audio files; data URIs or short silent bases to prevent errors, to be handled in JS dynamically -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>
