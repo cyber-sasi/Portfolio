@@ -244,7 +244,7 @@ window.addEventListener('resize', () => {
 const introMessages = [
     "Booting Secure System...",
     "Initializing Firewall...",
-    "Enforcing Security Protocols...",
+    "Bypassing Security Protocols...",
     "Loading User Profile...",
     "User: SasiKumar S",
     "Verifying Credentials...",
@@ -358,13 +358,23 @@ const btnStart = document.getElementById("btn-start");
 btnStart.addEventListener('click', () => {
     // Resume audio context inside a trusted user click event
     if (audioCtx.state === 'suspended') audioCtx.resume();
-    startOverlay.classList.add("hidden");
+    
+    // Trigger opening lock and success button state
+    const lock = document.querySelector('.uplink-lock');
+    if (lock) lock.classList.add('unlocked');
+    btnStart.textContent = "[ ACCESS_GRANTED ]";
+    btnStart.classList.add('granted');
 
-    // Play a brief boot sound
-    createOscillator(600, 'sine', 0.2, 0.1);
+    // Play a dual-tone boot success sound
+    createOscillator(600, 'sine', 0.15, 0.1);
+    setTimeout(() => createOscillator(900, 'sine', 0.3, 0.1), 150);
 
-    // Start intro sequence after a brief pause
-    setTimeout(typeIntro, 500);
+    // Delay the intro sequence to let the lock opening animation finish
+    setTimeout(() => {
+        startOverlay.classList.add("hidden");
+        // Start intro sequence after a brief pause
+        setTimeout(typeIntro, 500);
+    }, 1100);
 });
 
 // ========== HOME TYPING EFFECT ==========
@@ -411,7 +421,7 @@ document.addEventListener('click', (e) => {
     const colors = [
         '#00ff41', // Green
         '#ff0033', // Red
-        '#ff00d4', // Blue
+        '#00d2ff', // Blue
         '#0ff',    // Cyan
         '#bc13fe', // Magenta
         '#f3fb1d'  // Yellow

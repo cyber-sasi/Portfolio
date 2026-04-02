@@ -197,10 +197,25 @@ body {
     transition: all 0.4s ease;
 }
 
-#btn-start:hover~* .uplink-lock-shackle,
-#start-overlay:has(#btn-start:hover) .uplink-lock-shackle {
-    transform: translateY(-8px);
-    border-color: #fff;
+/* Explicit unlocked state */
+.uplink-lock.unlocked .uplink-lock-shackle {
+    transform: translateY(-16px) rotate(25deg) translateX(6px);
+    transform-origin: bottom right;
+    border-color: var(--neon-green);
+}
+
+.uplink-lock.unlocked .uplink-lock-body {
+    background: rgba(0, 255, 65, 0.4);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+}
+
+.uplink-lock.unlocked .uplink-lock-keyhole {
+    background: #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+.uplink-lock.unlocked .uplink-lock-keyhole::after {
+    background: #fff;
 }
 
 .uplink-lock-body {
@@ -291,6 +306,7 @@ body {
     position: relative;
     z-index: 2;
     clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    overflow: hidden;
 }
 
 #btn-start::before {
@@ -312,13 +328,47 @@ body {
 }
 
 #btn-start:hover {
-    background: rgba(0, 255, 65, 0.12);
+    background: rgba(0, 255, 65, 0.2);
     border-color: var(--neon-green);
+    color: #fff;
     box-shadow:
-        0 0 40px rgba(0, 255, 65, 0.4),
-        inset 0 0 20px rgba(0, 255, 65, 0.1);
-    transform: scale(1.04);
-    letter-spacing: 5px;
+        0 0 40px rgba(0, 255, 65, 0.6),
+        inset 0 0 20px rgba(0, 255, 65, 0.3);
+    text-shadow: 0 0 8px #fff;
+    transform: scale(1.03);
+    letter-spacing: 7px;
+}
+
+/* Moving scanline inside the button on hover */
+#btn-start:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 25px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px #fff;
+    transform: skewX(-20deg);
+    animation: btn-scanline 0.8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes btn-scanline {
+    0% { left: -50%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 150%; opacity: 0; }
+}
+
+/* Granted state class */
+#btn-start.granted {
+    background: var(--neon-green);
+    color: #000;
+    text-shadow: none;
+    box-shadow: 0 0 50px var(--neon-green);
+    border-color: var(--neon-green);
+    letter-spacing: 7px;
+    transform: scale(1.08);
 }
 
 
@@ -2588,6 +2638,16 @@ body {
     .contact-intro h3 {
         font-size: 1.5rem;
     }
+
+    /* --- Uplink Overlay --- */
+    .uplink-top-strip {
+        gap: 15px;
+        font-size: 0.55rem;
+    }
+    .uplink-status-bar {
+        gap: 12px;
+        font-size: 0.5rem;
+    }
 }
 
 /* ── 3. MOBILE (≤ 480px) ── */
@@ -2734,6 +2794,40 @@ body {
     #btn-start {
         font-size: 1rem;
         padding: 15px 25px;
+        letter-spacing: 2px !important;
+    }
+    
+    #btn-start:hover {
+        letter-spacing: 4px !important;
+    }
+
+    /* --- Uplink Overlay --- */
+    .uplink-top-strip {
+        width: 100%;
+        left: 0;
+        transform: none;
+        justify-content: space-between;
+        padding: 0 15px;
+        top: 25px;
+    }
+    
+    .uplink-top-center {
+        display: none; /* Hide middle label on small screens to prevent overlap */
+    }
+    
+    .uplink-status-bar {
+        flex-direction: column;
+        gap: 4px;
+        bottom: 15px;
+    }
+    
+    .uplink-status-bar .uplink-blink {
+        display: none; /* Hide separators on mobile */
+    }
+    
+    .uplink-subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 1.5px;
     }
 }
 
@@ -2767,6 +2861,15 @@ body {
     .stat-label {
         width: 100px;
         font-size: 0.75rem;
+    }
+
+    /* --- Uplink Overlay --- */
+    .uplink-top-strip {
+        font-size: 0.5rem;
+        padding: 0 10px;
+    }
+    .uplink-status-bar {
+        font-size: 0.45rem;
     }
 }
 
