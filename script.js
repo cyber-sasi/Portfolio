@@ -415,7 +415,6 @@ function startHomeTyping() {
 // Click Blast Animation
 document.addEventListener('click', (e) => {
     if (!introScreen.classList.contains('hidden')) return;
-    playBlastSound();
 
     // Pick a random RGB-style Neon color
     const colors = [
