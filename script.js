@@ -379,10 +379,10 @@ btnStart.addEventListener('click', () => {
 
 // ========== HOME TYPING EFFECT ==========
 const homeRoles = [
-    "Cybersecurity Enthusiast",
-    "Passionate Programmer",
-    "Future Ethical Hacker",
-    "Building Secure Digital Systems"
+    "Cybersecurity Practitioner",
+    "Penetration Testing Learner",
+    "Bug Bounty Researcher",
+    "Future Ethical Hacker"
 ];
 let roleIndex = 0;
 let charIndex = 0;
